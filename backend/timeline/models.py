@@ -13,7 +13,7 @@ class Timeline(models.Model):
         ('D', 'Dropped')
     )
 
-    user = models.ForeignKey(User,related_name='timeline', 
+    author = models.ForeignKey(User,related_name='timeline', 
         on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     content = models.TextField()
@@ -24,3 +24,6 @@ class Timeline(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        ordering = ('-created',)
