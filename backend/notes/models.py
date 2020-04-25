@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class NoteTopic(models.Model):
     author = models.ForeignKey(User,related_name='notetopic', 
         on_delete=models.CASCADE)
-    topic = models.CharField(max_length=100, )
+    topic = models.CharField(max_length=100, unique=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
