@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'notes.apps.NotesConfig',
     'remember.apps.RememberConfig',
     'timeline.apps.TimelineConfig',
-    'users.apps.UsersConfig',
 ]
 
 
