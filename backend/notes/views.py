@@ -1,12 +1,8 @@
-from django.contrib.auth.models import User
-
 from rest_framework import generics
-from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
 
 from .models import NoteTopic, Note
 from .serializers import NoteTopicSerializer, NoteSerializer
+
 
 class NoteTopicList(generics.ListAPIView):
     serializer_class = NoteTopicSerializer
@@ -18,6 +14,9 @@ class NoteTopicList(generics.ListAPIView):
 class NoteTopicCreate(generics.CreateAPIView):
     queryset = NoteTopic.objects.all()
     serializer_class = NoteTopicSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 
 class NoteTopicDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -38,6 +37,9 @@ class NoteList(generics.ListAPIView):
 class NoteCreate(generics.CreateAPIView):
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 
 class NoteDetail(generics.RetrieveUpdateDestroyAPIView):

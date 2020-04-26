@@ -6,10 +6,10 @@ class NoteTopicSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = NoteTopic
-        fields = ('id', 'author', 'topic','created',)
+        fields = ('id', 'topic','created',)
 
 class NoteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Note
-        fields = ('id', 'author', 'notetopic', 'title', 'takeway', 'tech_detail', 'created',)
+        fields = ('id', 'notetopic', 'title', 'takeway', 'tech_detail', 'created',)
