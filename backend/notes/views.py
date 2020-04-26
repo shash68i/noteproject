@@ -6,7 +6,7 @@ from .serializers import NoteTopicSerializer, NoteSerializer
 
 class NoteTopicList(generics.ListAPIView):
     serializer_class = NoteTopicSerializer
-
+    # queryset = NoteTopic.objects.all()
     def get_queryset(self):
         return NoteTopic.objects.filter(author=self.request.user)
 

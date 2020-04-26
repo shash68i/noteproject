@@ -1,8 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 class NoteTopic(models.Model):
-    author = models.ForeignKey(User,related_name='notetopic', 
+    author = models.ForeignKey(get_user_model(),related_name='notetopic', 
         on_delete=models.CASCADE)
     topic = models.CharField(max_length=100, unique=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -16,7 +16,7 @@ class NoteTopic(models.Model):
 
 
 class Note(models.Model):
-    author = models.ForeignKey(User,related_name='notes',
+    author = models.ForeignKey(get_user_model(),related_name='notes',
         on_delete=models.CASCADE)
     notetopic = models.ForeignKey(NoteTopic, related_name='notes',
         on_delete=models.CASCADE)
